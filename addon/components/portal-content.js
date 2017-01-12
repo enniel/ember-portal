@@ -1,6 +1,9 @@
 import Component from 'ember-component';
 import service from 'ember-service/inject';
 import computed from 'ember-computed';
+import observer from 'ember-metal/observer';
+import on from 'ember-evented/on';
+import { scheduleOnce } from 'ember-runloop';
 import portalIdForName from '../utils/portal-id';
 
 export default Component.extend({
@@ -14,6 +17,18 @@ export default Component.extend({
       return this.get("portalService").itemsFor(this.get("for"));
     }
   }),
+
+  portalComponent: computed("for", {
+    get() {
+      return this.get("portalService").portalFor(this.get("for"))["component"];
+    }
+  }),
+
+  _args: on("init", observer('portalComponent.args.{*}', function() {
+    scheduleOnce("afterRender", this, () => {
+      this.set("args", this.get("portalComponent.args"));
+    });
+  })),
 
   wormholeName: computed("for", {
     get() {

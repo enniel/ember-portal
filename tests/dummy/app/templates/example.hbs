@@ -1,16 +1,16 @@
 <div class="section">
   <span class="template-name">example.hbs</span>
 
-  {{#portal-content for="header"}}
+  {{#portal-content for="header" as |args|}}
     <div id="examples-header" class="header">
-      Examples Header - defined in example.hbs
+      Example {{args.title}} - defined in example.hbs
     </div>
   {{/portal-content}}
 
-  {{#portal-content for="footer"}}
+  {{#portal-content for="footer" as |args|}}
     <div id="examples-footer" class="footer">
       <p>
-        Examples Footer - defined in example.hbs
+        Example {{args.title}} - defined in example.hbs
       </p>
       <p>
         <button {{action "clicked"}}>click me</button> - actions work as expected.

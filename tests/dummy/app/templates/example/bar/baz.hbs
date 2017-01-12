@@ -1,15 +1,15 @@
 <div class="section">
   <span class="template-name">example/bar/baz.hbs</span>
 
-  {{#portal-content for="header"}}
+  {{#portal-content for="header" as |args|}}
     <div id="baz-header" class="header">
-      Baz Header - defined in example/bar/baz.hbs
+      Baz {{args.title}} - defined in example/bar/baz.hbs
     </div>
   {{/portal-content}}
 
-  {{#portal-content for="footer"}}
+  {{#portal-content for="footer" as |args|}}
     <div id="baz-footer" class="footer">
-      Baz Footer - defined in example/bar/baz.hbs
+      Baz {{args.title}} - defined in example/bar/baz.hbs
     </div>
   {{/portal-content}}
 

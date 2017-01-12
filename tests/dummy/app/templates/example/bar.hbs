@@ -1,9 +1,9 @@
 <div class="section">
   <span class="template-name">example/bar.hbs</span>
 
-  {{#portal-content for="footer"}}
+  {{#portal-content for="footer" as |args|}}
     <div id="bar-footer" class="footer">
-      Bar Footer - defined in example/bar.hbs
+      Bar {{args.title}} - defined in example/bar.hbs
     </div>
   {{/portal-content}}
 

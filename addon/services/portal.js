@@ -13,14 +13,25 @@ export default Service.extend({
     this.set("portals", {});
   },
 
-  itemsFor(name) {
+  portalFor(name) {
     const portals = this.get("portals");
-    let items = portals[name];
-    if (!items) {
+    let portal = portals[name], items = portal && portal["items"];
+    if (!portal) {
       items = Ember.A();
-      portals[name] = items;
+      portal = {
+        items, component: null
+      };
+      portals[name] = portal;
     }
-    return items;
+    return portal;
+  },
+
+  itemsFor(name) {
+    return this.portalFor(name)["items"];
+  },
+
+  setPortalComponent(name, component) {
+    this.portalFor(name)["component"] = component;
   },
 
   addPortalContent(name, component) {

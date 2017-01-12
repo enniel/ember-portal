@@ -1,9 +1,9 @@
 <div class="section">
   <span class="template-name">example/foo.hbs</span>
 
-  {{#portal-content for="header"}}
+  {{#portal-content for="header" as |args|}}
     <div id="foo-header" class="header">
-      Foo Header - defined in example/foo.hbs
+      Foo {{args.title}} - defined in example/foo.hbs
     </div>
   {{/portal-content}}
 

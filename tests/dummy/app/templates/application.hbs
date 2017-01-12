@@ -11,7 +11,7 @@
   {{#if showingHeader}}
     <div class="portal-wrapper">
       <span class="portal-name">header portal</span>
-      {{portal-for name="header" portal-class="header-portal"}}
+      {{portal-for name="header" portal-class="header-portal" args=(hash title=headerTitle)}}
     </div>
   {{/if}}
 
@@ -20,12 +20,14 @@
   {{#if showingFooter}}
     <div class="portal-wrapper">
       <span class="portal-name">footer portal</span>
-      {{portal-for name="footer" portal-class="footer-portal"}}
+      {{portal-for name="footer" portal-class="footer-portal" args=(hash title=footerTitle)}}
     </div>
   {{/if}}
 
   <div class="tools">
     <button {{action "toggleHeader"}}>Toggle header</button>
     <button {{action "toggleFooter"}}>Toggle footer</button>
+    {{input value=headerTitle placeholder="Header title"}}
+    {{input value=footerTitle placeholder="Footer title"}}
   </div>
 </div>
